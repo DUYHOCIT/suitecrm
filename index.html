@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <p>Đang chuyển hướng...</p>
+
+  <script>
+    fetch("https://raw.githubusercontent.com/DUYHOCIT/publictext/refs/heads/main/port.txt")
+      .then(res => res.text())
+      .then(port => {
+        port = port.trim();
+        if (!port) throw "PORT rỗng";
+
+        const target = "http://103.77.246.206:" + port + "/";
+        window.location.replace(target);
+      })
+      .catch(err => {
+        document.body.innerHTML =
+          "<h3>Lỗi không lấy được PORT</h3><pre>" + err + "</pre>";
+      });
+  </script>
+</body>
+</html>
